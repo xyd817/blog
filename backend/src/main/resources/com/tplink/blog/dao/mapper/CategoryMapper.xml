@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--MyBatis配置文件-->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tplink.blog.dao.mapper.CategoryMapper">
+
+    <select id="findAllDetail" resultType="com.tplink.blog.vo.CategoryVo">
+        SELECT t2.id, t2.avatar, t2.category_name, t2.description, COUNT(t1.id) articles
+        FROM ms_article t1
+        JOIN ms_category t2
+        ON t1.category_id = t2.id
+        GROUP BY t2.id, t2.avatar, t2.category_name, t2.description
+
+    </select>
+</mapper>
